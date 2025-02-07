@@ -1,4 +1,4 @@
-import 'package:basic_widget/splash_screen.dart';
+import 'package:basic_widget/detail_product.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Inter'
-      ),
+      theme: ThemeData(fontFamily: 'Inter'),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: DetailProduct(),
     );
   }
 }

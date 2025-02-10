@@ -1,13 +1,73 @@
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final usernameController = TextEditingController();
+
+  final passwordController = TextEditingController();
+
+  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register Screennnn'),
+        title: Text('Register Form'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          spacing: 20,
+          children: [
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                label: Text("Username"),
+                hintText: "Masukkan Username Kamu",
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.person),
+              ),
+            ),
+            TextField(
+              controller: passwordController,
+              obscureText: isObscure,
+              decoration: InputDecoration(
+                label: Text("Password"),
+                hintText: "Masukkan Passwoord Kamu",
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    if (isObscure == true) {
+                      setState(() {
+                        isObscure = false;
+                      });
+                    } else {
+                      setState(() {
+                        isObscure = true;
+                      });
+                    }
+                  },
+                  icon: Icon(isObscure == false
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print("Username : ${usernameController.text}");
+                print("Password : ${passwordController.text}");
+              },
+              child: Text("Login"),
+            )
+          ],
+        ),
       ),
     );
   }

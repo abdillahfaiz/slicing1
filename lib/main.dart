@@ -1,5 +1,8 @@
+import 'package:basic_widget/counter_screen.dart';
 import 'package:basic_widget/detail_product.dart';
+import 'package:basic_widget/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'product_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Inter'),
       debugShowCheckedModeBanner: false,
-      home: DetailProduct(),
+      home: CounterScreen(),
     );
   }
 }

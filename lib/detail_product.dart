@@ -23,7 +23,7 @@ class DetailProduct extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                  'https://images-cdn.ubuy.co.id/6500db1bdb76d0072f4a0b53-apple-watch-series-6-gps-40mm-gold.jpg'),
+                  'https://upload.wikimedia.org/wikipedia/commons/0/0f/Idn_boarding_school_logo_%282020%29.png'),
               Text(
                 "Apple Watch Series 6",
                 style: TextStyle(

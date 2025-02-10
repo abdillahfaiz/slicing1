@@ -43,6 +43,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 border: OutlineInputBorder(),
                 suffixIcon: IconButton(
                   onPressed: () {
+                    // Cara Pertama
+                    // isObscure = !isObscure;
+
+                    //Cara kedua
                     if (isObscure == true) {
                       setState(() {
                         isObscure = false;

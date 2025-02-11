@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CounterWidget extends StatefulWidget {
-  const CounterWidget({super.key});
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
 
   @override
-  State<CounterWidget> createState() => _CounterWidgetState();
+  State<CounterScreen> createState() => _CounterScreenState();
 }
 
-class _CounterWidgetState extends State<CounterWidget> {
+class _CounterScreenState extends State<CounterScreen> {
   int count = 1;
 
   @override
@@ -18,20 +18,31 @@ class _CounterWidgetState extends State<CounterWidget> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               count.toString(),
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(
+                fontSize: 30,
+              ),
             ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  count++;
+                  count = count + 1;
                 });
-                print(count);
+                print('count adalah ${count.toString()}');
               },
               child: Text("Tambah"),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  count = count - 1;
+                });
+              },
+              child: Text("Kurang"),
+            ),
           ],
         ),
       ),

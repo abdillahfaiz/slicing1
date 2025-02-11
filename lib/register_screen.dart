@@ -65,8 +65,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                print("Username : ${usernameController.text}");
-                print("Password : ${passwordController.text}");
+                // // replace halaman ini dan pindah ke halaman product list
+                Navigator.pushReplacementNamed(context, '/product-list');
+
+                // hanya pindah ke halaman product list dan bisa
+                // balik lagi ke register screen
+                // Navigator.pushNamed(context, '/product-list');
+
               },
               child: Text("Login"),
             )

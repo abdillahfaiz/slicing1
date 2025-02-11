@@ -2,6 +2,7 @@ import 'package:basic_widget/counter_screen.dart';
 import 'package:basic_widget/detail_product.dart';
 import 'package:basic_widget/register_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'product_list.dart';
 
 void main() {
@@ -16,7 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Inter'),
       debugShowCheckedModeBanner: false,
-      home: CounterScreen(),
+      initialRoute: '/product-list',
+      routes: {
+        '/' : (context) => RegisterScreen(),
+        '/product-list' : (context) => ProductListScreen(),
+        '/detail-product' : (context) => DetailProduct(),
+        '/counter' : (context) => CounterScreen()
+      },
     );
   }
 }

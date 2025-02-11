@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ProdctListScreen extends StatelessWidget {
-  ProdctListScreen({super.key});
+class ProductListScreen extends StatefulWidget {
+  const ProductListScreen({super.key});
 
-  final data = [
-    "Sony WH-1000XM3",
-    "Microsoft Xbox",
-    "Logitech G733 ",
-    "Xiaomi Wired in-Ear Earphones",
-    "Samsung Galaxy S21 FE 5G",
-    "Samsung Galaxy S22 5G",
-    "Poco by Xiaomi F1",
-    "Samsung Galaxy M14 5G",
-    "Apple iPhone 14 (128 GB)",
-    "Apple iPhone 12 (256GB)",
-    "Xiaomi 12 Pro",
-    "Xiaomi 11T Pro 5G",
-  ];
+  @override
+  State<ProductListScreen> createState() => _ProductListScreenState();
+}
+
+class _ProductListScreenState extends State<ProductListScreen> {
+  final data = [];
 
   final category = [
     "Makanan",
@@ -26,30 +18,49 @@ class ProdctListScreen extends StatelessWidget {
     "Hobi",
   ];
 
+  final productController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         title: Text("Products"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.logout),
+          )
+        ],
       ),
       body: Column(
         children: [
           SizedBox(
-            height: 50,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: category.length,
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  width: 10,
-                );
-              },
-              itemBuilder: (context, index) {
-                return Chip(
-                  label: Text(category[index]),
-                );
-              },
+            height: 100,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: productController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("product"),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    final input = productController.text;
+
+                    setState(() {
+                      data.add(input);
+                    });
+
+                  },
+                  child: Text("Save"),
+                )
+              ],
             ),
           ),
           Expanded(
@@ -57,6 +68,9 @@ class ProdctListScreen extends StatelessWidget {
               itemCount: data.length,
               itemBuilder: (context, index) {
                 return ListTile(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/detail-product');
+                  },
                   leading: Text(index.toString()),
                   title: Text(data[index]),
                   subtitle: Text("Available Product"),

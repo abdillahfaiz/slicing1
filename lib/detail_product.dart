@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DetailProduct extends StatelessWidget {
-  const DetailProduct({super.key});
+  const DetailProduct({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +11,13 @@ class DetailProduct extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
         scrolledUnderElevation: 0,
-        leading: Icon(Icons.arrow_back),
         title: Text(
           'Detail Product',
         ),
@@ -25,7 +32,7 @@ class DetailProduct extends StatelessWidget {
               Image.network(
                   'https://upload.wikimedia.org/wikipedia/commons/0/0f/Idn_boarding_school_logo_%282020%29.png'),
               Text(
-                "Apple Watch Series 6",
+                "Apple Watch",
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Inter',

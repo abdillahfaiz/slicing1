@@ -65,15 +65,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                // // replace halaman ini dan pindah ke halaman product list
-                Navigator.pushReplacementNamed(context, '/product-list');
-
-                // hanya pindah ke halaman product list dan bisa
-                // balik lagi ke register screen
-                // Navigator.pushNamed(context, '/product-list');
-
+                if (usernameController.text != '' &&
+                    passwordController.text != '') {
+                  Navigator.pushReplacementNamed(context, '/product-list');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.green,
+                      behavior: SnackBarBehavior.floating,
+                      content: Text(
+                        "Berhasil Login",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      behavior: SnackBarBehavior.floating,
+                      content: Text(
+                        "Username dan Pasword tidak boleh kosong",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  );
+                }
               },
-              child: Text("Login"),
+              style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.green)),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             )
           ],
         ),

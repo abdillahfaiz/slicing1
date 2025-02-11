@@ -51,12 +51,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    final input = productController.text;
-
                     setState(() {
-                      data.add(input);
+                      data.add(productController.text);
                     });
-
+                    productController.clear();
                   },
                   child: Text("Save"),
                 )
@@ -69,8 +67,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   onTap: () {
-                    Navigator.pushNamed(context, '/detail-product');
+                    // Navigator.pushNamed(context, '/detail-product');
                   },
+                  trailing: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          data.remove(data[index]);
+                        });
+                      },
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      )),
                   leading: Text(index.toString()),
                   title: Text(data[index]),
                   subtitle: Text("Available Product"),

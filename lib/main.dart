@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Inter'),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/product-list',
+      initialRoute: '/',
       routes: {
         '/' : (context) => RegisterScreen(),
         '/product-list' : (context) => ProductListScreen(),
